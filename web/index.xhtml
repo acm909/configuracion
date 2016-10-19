@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <f:loadBundle basename="propiedades.datos" var="pc" />
+    <h:head>
+        <title>
+            #{pc.titulo}
+        </title>
+    </h:head>
+    <h:body>
+        <h1>#{pc.tituloh}</h1>
+        
+        <h:form>
+            <h3>#{pc.memoria}</h3>
+            <h:selectOneMenu value="#{compra.memoria}" >
+                <f:selectItems value="#{geters.memoria}" var="m" itemLabel="#{m.modelo}" itemValue="#{m.idmemoria}" />
+            </h:selectOneMenu>
+            <h3>#{pc.accesorio}</h3>
+            <h:selectManyCheckbox value="#{compra.componentes}" >
+                <f:selectItems value="#{geters.componentes}" var="c" itemLabel="#{c.denominacion}" itemValue="#{c.idcomponentes}" />
+            </h:selectManyCheckbox>
+            
+            <h3>#{pc.forma}</h3>
+            <h:selectOneRadio value="#{compra.pago}"  >
+                <f:selectItems value="#{geters.pago}" var="pa" itemLabel="#{pa.tipo_pago}" itemValue="#{pa.idpago}" />
+            </h:selectOneRadio>
+            <h:commandButton action="#{compra.comprar()}" value="#{pc.boton}" />
+               
+               
+            
+           
+            
+        </h:form>
+    </h:body>
+</html>
+
